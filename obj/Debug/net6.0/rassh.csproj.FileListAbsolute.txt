@@ -1,0 +1,15 @@
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/rassh
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/rassh.deps.json
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/rassh.runtimeconfig.json
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/rassh.dll
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/ref/rassh.dll
+/home/melvin/Data/Code/rassh/bin/Debug/net6.0/rassh.pdb
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.csproj.AssemblyReference.cache
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.GeneratedMSBuildEditorConfig.editorconfig
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.AssemblyInfoInputs.cache
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.AssemblyInfo.cs
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.csproj.CoreCompileInputs.cache
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.dll
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/ref/rassh.dll
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.pdb
+/home/melvin/Data/Code/rassh/obj/Debug/net6.0/rassh.genruntimeconfig.cache
