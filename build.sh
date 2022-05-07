@@ -10,7 +10,7 @@ sed -i "s;Version: .*;Version: $version;" $SCRIPT_DIR/SPECS/utils.spec
 fullVersion="$version-$(cat SPECS/utils.spec | grep "Release" | awk '{print $2}')"
 
 echo "###### Building Changelog"
-cat $SCRIPT_DIR/RPM/SPECS/utils.spec  | grep -Pzo "%changelog(.*\n)*" | tail -n+2 > $SCRIPT_DIR/CHANGELOG
+cat $SCRIPT_DIR/SPECS/utils.spec  | grep -Pzo "%changelog(.*\n)*" | tail -n+2 > $SCRIPT_DIR/CHANGELOG
 
 echo "###### Preparing release folder"
 sed -i "s;!releases/.*;!releases/v$version/*;" .gitignore
