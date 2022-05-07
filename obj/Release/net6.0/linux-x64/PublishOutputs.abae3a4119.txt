@@ -1,2 +1,0 @@
-/home/melvin/Data/Code/rassh/publish/rassh.pdb
-/home/melvin/Data/Code/rassh/publish/rassh

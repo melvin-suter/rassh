@@ -1,0 +1,1 @@
+13 * * * * root /usr/sbin/rassh cleanup > /dev/null

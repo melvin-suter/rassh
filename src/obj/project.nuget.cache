@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "rwuHvcthcigkuyHRm94zhkXB+EW4X9jCxvTTyxz0CNRpeF78h/xtIcA41F/H58aEOaCxRztBdd/erAA6owB8bQ==",
+  "success": true,
+  "projectFilePath": "/home/melvin/Data/Code/rassh/src/rassh.csproj",
+  "expectedPackageFiles": [
+    "/home/melvin/.nuget/packages/system.commandline/2.0.0-beta3.22114.1/system.commandline.2.0.0-beta3.22114.1.nupkg.sha512",
+    "/home/melvin/.nuget/packages/yamldotnet/11.2.1/yamldotnet.11.2.1.nupkg.sha512",
+    "/home/melvin/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/6.0.4/microsoft.netcore.app.runtime.linux-x64.6.0.4.nupkg.sha512",
+    "/home/melvin/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/6.0.4/microsoft.aspnetcore.app.runtime.linux-x64.6.0.4.nupkg.sha512",
+    "/home/melvin/.nuget/packages/microsoft.netcore.app.crossgen2.linux-x64/6.0.4/microsoft.netcore.app.crossgen2.linux-x64.6.0.4.nupkg.sha512",
+    "/home/melvin/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.4/microsoft.netcore.app.host.linux-x64.6.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
