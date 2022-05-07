@@ -40,8 +40,8 @@ class ActionSet {
         Helper.log("Creating access script");
         string scriptContent = "";
         scriptContent += "#!/bin/bash\n";
-        scriptContent +=  "test -n \"$(command -v dnf)\" && sudo dnf install -y -q sshpass";
-        scriptContent +=  "test -n \"$(command -v apt-get)\" && sudo apt-get install -y sshpass";
+        scriptContent +=  "test -n \"$(command -v dnf)\" && sudo dnf install -y -q sshpass\n";
+        scriptContent +=  "test -n \"$(command -v apt-get)\" && sudo apt-get install -y sshpass\n";
         scriptContent += "sshpass -p '"+password+"' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l"+username+" -p"+val_port.ToString();
         foreach(string red in val_redirections){
             scriptContent += " -R " + red;

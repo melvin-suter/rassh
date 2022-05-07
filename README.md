@@ -65,3 +65,30 @@ server {
 }
 
 ```
+
+## Examples
+
+```bash
+[root@rasshserver rassh]# rassh create
+... Creating user rassh1651958500
+... Setting password
+... Creating .bashrc
+... Enabling commands for user
+... Setting owner
+... Making .bashrc immutable
+... Creating access script
+
+curl https://rasshserver.example.com/rassh/rassh1651958500.sh | bash
+
+[root@rasshserver rassh]# rassh list
+Username         Date
+====================================
+rassh1651958500  2022-05-08T21:21:40
+
+[root@rasshserver rassh]# cat /var/lib/rassh/scripts/rassh1651958500.sh
+#!/bin/bash
+test -n "$(command -v dnf)" && sudo dnf install -y -q sshpass
+test -n "$(command -v apt-get)" && sudo apt-get install -y sshpass
+sshpass -p '2558804f' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -lrassh1651958500 -p22 -R 22:localhost:50022@rasshserver.example.com
+
+```
