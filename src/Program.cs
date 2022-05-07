@@ -1,4 +1,6 @@
 ﻿using System.CommandLine;
+using System.CommandLine.Builder;
+using System.CommandLine.Parsing;
 
 // Load Config
 Config.load();
@@ -11,14 +13,14 @@ Config.load();
 var rootCommand = new RootCommand();
 
 
+
 // Options
 var opt_verbose = new Option<bool>(name:"--verbose", description: "VERBOSITY ENSUES"){IsHidden = true};
 opt_verbose.AddAlias("-v");
 var opt_dryrun = new Option<bool>(name:"--dryrun", description: "Please don't destroy my system");
 var opt_port = new Option<int>(name:"--port", description: "Specify SSH port to use",getDefaultValue: () => 22);
 var opt_redirections = new Option<List<string>>(name:"--redirect", getDefaultValue: () => new List<string>(){"22:localhost:50022"} , description: "Specify a local port to redirect (Format local:ip:gate i.E. 22:localhost:50022) can be use multiple times");
-var opt_username = new Option<string>(name:"--username", description: "Specify a username"){IsRequired = true};
-opt_username.AddAlias("-u");
+var opt_username = new Argument<string>(name:"username", description: "Specify a username");
 var opt_ttl = new Option<int>(name:"--ttl", description: "Specify the time-to-live for this rassh session in hours",getDefaultValue: () => 24);
 
 
@@ -74,64 +76,29 @@ cmd_cleanup.SetHandler(
 rootCommand.Add(cmd_cleanup);
 
 
+/***************
+*   Invoke
+***************/
 
-// RUN
-await rootCommand.InvokeAsync(args);
+var cliBuilder = new CommandLineBuilder(rootCommand);
+cliBuilder.UseDefaults();
 
+// Add Middleware to handle stuff globaly
+cliBuilder.AddMiddleware(async (context, next) => {
+    // Prepare Logging function
+    Helper.val_dryrun = context.ParseResult.GetValueForOption(opt_dryrun);
+    Helper.val_verbose = context.ParseResult.GetValueForOption(opt_verbose);
 
+    // Check if run as root/sudo, as long as not config/list command
+    if(context.ParseResult.CommandResult.Command != cmd_list && context.ParseResult.CommandResult.Command != cmd_config){
+        Helper.checkRoot();
+    }
+        
+    // Create folders if possible
+    Shell.checkOnFolders();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-// Global Parameters
-var opt_version = new Option<bool>(name:"--version", description: "Show installed version");
-opt_version.AddAlias("-V");
-//rootCommand.AddGlobalOption(opt_version);
-
-
-var rootCommand = new RootCommand();
-var sub1Command = new Command("-v", "Show installed version");
-var sub1aCommand = new Command("sub1a", "Second level subcommand");
-
-var messageOption = new Option<string>
-    (name:"--message", description: "An option whose argument is parsed as a string.",getDefaultValue: () => "default");
-messageOption.AddAlias("-m");
-
-rootCommand.AddGlobalOption(messageOption);
-
-rootCommand.Add(sub1Command);
-rootCommand.Add(sub1aCommand);
-
-rootCommand.SetHandler((string messageOptionValue) =>{
-    Console.WriteLine(messageOptionValue);
-},messageOption);
-sub1Command.SetHandler(() =>{
-    Console.WriteLine("Version " + Helper.getVersion());
+    next(context);
 });
-sub1aCommand.SetHandler((string messageOptionValue) =>{
-    Console.WriteLine("sub1a " +messageOptionValue);
-},messageOption);
 
-await rootCommand.InvokeAsync(args);
-*/
+var parser = cliBuilder.Build();
+await parser.InvokeAsync(args);

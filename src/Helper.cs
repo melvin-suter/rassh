@@ -2,6 +2,8 @@ public class Helper {
 
     [System.Runtime.InteropServices.DllImport("libc")]
     public static extern uint getuid();
+    public static bool val_verbose = false;
+    public static bool val_dryrun = false;
 
 
     private static Random random = new Random();
@@ -26,29 +28,30 @@ public class Helper {
 
     public static void log(string message, LogLevel level = LogLevel.info){
         // TODO: Do something with the log level
-        Console.WriteLine("... " + message);
+        switch(level){
+            case LogLevel.verbose:
+                if(val_verbose){
+                    Console.WriteLine("DEBUG ... " + message);
+                }
+                break;
+            case LogLevel.dryrun:
+                if(val_dryrun){
+                    Console.WriteLine("DRYRUN ... " + message);
+                }
+                break;
+            default:
+                Console.WriteLine("... " + message);
+                break;
+        }
     }
 
     public static string getRandomString(int length, string chars="abcdef0123456789"){
         return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
     }
 
-    public static string GetFQDN()
-    {
-        string domainName = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
-        string hostName = System.Net.Dns.GetHostName();
-
-        domainName = "." + domainName;
-        if(!hostName.EndsWith(domainName))  // if hostname does not already include domain name
-        {
-            hostName += domainName;   // add the domain name part
-        }
-
-        return hostName;                    // return the fully qualified name
-    }
-
     public enum LogLevel {
         info,
-        verbose
+        verbose,
+        dryrun
     }
 }

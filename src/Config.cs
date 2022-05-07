@@ -5,11 +5,11 @@ public class Config {
 
     public string homeBaseFolder = "/var/lib/rassh/home";
     public string accessScriptFolder = "/var/lib/rassh/scripts";
-    public string publicAccessName = Helper.GetFQDN();
-    public string scriptBaseURL = "https://" + Helper.GetFQDN() + "/rassh";
+    public string publicAccessName = System.Net.Dns.GetHostName();
+    public string scriptBaseURL = "https://" + System.Net.Dns.GetHostName() + "/rassh";
     public int passwordLength = 8;
     public int defaultTTL = (24); // in hours
-    public List<string> allowedCommands = new List<string>(){"/bin/hostname"};
+    public List<string> allowedCommands = new List<string>(){"/bin/hostname","/bin/figlet","/bin/clear"};
 
     public static void load(){
         Config newConf = new Config();
@@ -54,7 +54,7 @@ public class Config {
             this.defaultTTL = newConf.defaultTTL;
         }
         if(newConf.allowedCommands != null){
-            this.allowedCommands = newConf.allowedCommands;
+            this.allowedCommands.AddRange(newConf.allowedCommands);
         }
     }
 }
