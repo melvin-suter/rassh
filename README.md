@@ -42,6 +42,13 @@ scriptBaseURL: https://HOSTNAME/rassh
 passwordLength: 8
 # Default Time-To-Live (in hours) for a remote user
 defaultTTL: 24
+# Default ssh port to use if not specified
+defaultSSHPort: 22
+# Which port-redirections should be used by default
+defaultPortRedirects:
+- "22:localhost:50022"
+- "443:localhost:50443"
+- "80:localhost:50080"
 # Which commands ADDITIONALY to the default commands should the remote access user be allowed to run
 allowedCommands:
 - /bin/hostname

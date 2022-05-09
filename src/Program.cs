@@ -18,8 +18,8 @@ var rootCommand = new RootCommand();
 var opt_verbose = new Option<bool>(name:"--verbose", description: "VERBOSITY ENSUES"){IsHidden = true};
 opt_verbose.AddAlias("-v");
 var opt_dryrun = new Option<bool>(name:"--dryrun", description: "Please don't destroy my system");
-var opt_port = new Option<int>(name:"--port", description: "Specify SSH port to use",getDefaultValue: () => 22);
-var opt_redirections = new Option<List<string>>(name:"--redirect", getDefaultValue: () => new List<string>(){"22:localhost:50022"} , description: "Specify a local port to redirect (Format local:ip:gate i.E. 22:localhost:50022) can be use multiple times");
+var opt_port = new Option<int>(name:"--port", description: "Specify SSH port to use",getDefaultValue: () => Config.config.defaultSSHPort);
+var opt_redirections = new Option<List<string>>(name:"--redirect", getDefaultValue: () => Config.config.defaultPortRedirects , description: "Specify a local port to redirect (Format local:ip:gate i.E. 22:localhost:50022) can be use multiple times");
 var opt_username = new Argument<string>(name:"username", description: "Specify a username");
 var opt_ttl = new Option<int>(name:"--ttl", description: "Specify the time-to-live for this rassh session in hours",getDefaultValue: () => 24);
 

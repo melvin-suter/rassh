@@ -66,9 +66,13 @@ class ActionSet {
         Helper.log("Removing user home if needed");
         Shell.run("bash","-c \"test -d "+homePath+" && rm -rf "+homePath+"\"");
 
-        Helper.log("Removing script if needed");
-        string scriptPath = Config.config.accessScriptFolder +"/" + val_username +".sh";
-        Shell.run("bash","-c \"test -d "+scriptPath+" && rm -rf "+scriptPath+"\"");
+        string scriptPath = Config.config.accessScriptFolder + "/" + val_username +".sh";
+        if(System.IO.File.Exists(scriptPath)){
+            Helper.log("Removing script");
+            Shell.run("bash","-c \"rm -f "+scriptPath+"\"");
+        } else {
+            Helper.log("Script '"+scriptPath+"' not found");
+        }
 
         
     }
@@ -94,6 +98,8 @@ class ActionSet {
         Console.WriteLine("Access Script URL:    "+Config.config.scriptBaseURL);
         Console.WriteLine("Password Length:      "+Config.config.passwordLength);
         Console.WriteLine("Allowed Commands:     "+String.Join(", ",Config.config.allowedCommands));
+        Console.WriteLine("Default SSH Port:     "+Config.config.defaultSSHPort);
+        Console.WriteLine("Default Redirects:    "+String.Join(", ",Config.config.defaultPortRedirects));
     }
 
     public static void cleanup(bool val_dryrun, bool val_verbose){

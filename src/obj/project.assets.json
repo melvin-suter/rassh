@@ -205,7 +205,7 @@
     "/home/melvin/.nuget/packages/": {}
   },
   "project": {
-    "version": "0.1.6",
+    "version": "0.1.7",
     "restore": {
       "projectUniqueName": "/home/melvin/Data/Code/rassh/src/rassh.csproj",
       "projectName": "rassh",

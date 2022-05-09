@@ -28,3 +28,6 @@ cd $SCRIPT_DIR
 rpmbuild --target x86_64 -bb SPECS/spak-rassh.spec
 mv $HOME/rpmbuild/RPMS/x86_64/spak-rassh-$fullVersion.x86_64.rpm $releaseDir/
 rm -rf $HOME/rpmbuild/{BUILD,BUILDROOT}
+
+echo "###### Removing git release cache"
+git rm -r --cached releases/

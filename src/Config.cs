@@ -8,7 +8,9 @@ public class Config {
     public string publicAccessName = System.Net.Dns.GetHostName();
     public string scriptBaseURL = "https://" + System.Net.Dns.GetHostName() + "/rassh";
     public int passwordLength = 8;
-    public int defaultTTL = (24); // in hours
+    public int defaultTTL = 24; // in hours
+    public int defaultSSHPort = 22;
+    public List<string> defaultPortRedirects = new List<string>(){"22:localhost:50022","443:localhost:50443","80:localhost:50080"};
     public List<string> allowedCommands = new List<string>(){"/bin/hostname","/bin/figlet","/bin/clear"};
 
     public static void load(){
@@ -53,8 +55,14 @@ public class Config {
         if(newConf.defaultTTL > 0){
             this.defaultTTL = newConf.defaultTTL;
         }
+        if(newConf.defaultSSHPort > 0){
+            this.defaultSSHPort = newConf.defaultSSHPort;
+        }
         if(newConf.allowedCommands != null){
             this.allowedCommands.AddRange(newConf.allowedCommands);
+        }
+        if(newConf.defaultPortRedirects != null){
+            this.defaultPortRedirects = newConf.defaultPortRedirects;
         }
     }
 }
