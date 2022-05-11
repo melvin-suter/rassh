@@ -1,6 +1,6 @@
 Summary: Installs the rassh tool
 Name: spak-rassh
-Version: 0.1.7
+Version: 0.1.8
 Release: 1
 License: GPL
 URL: https://github.com/melvin-suter/rassh
@@ -42,6 +42,10 @@ exit
 rm -rf $RPM_BUILD_ROOT/etc
 
 %changelog
+
+* Sat May 11 2022 SuterDEV <packages@suter.dev>
+  v0.1.8
+  - Default redirection config works now
 
 * Sat May 07 2022 SuterDEV <packages@suter.dev>
   v0.1.7

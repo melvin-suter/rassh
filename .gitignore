@@ -4,4 +4,4 @@ src/obj/Debug/*
 src/obj/Release/*
 src/publish/*
 releases/*/*
-!releases/v0.1.7/*
+!releases/v0.1.8/*

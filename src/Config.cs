@@ -10,7 +10,7 @@ public class Config {
     public int passwordLength = 8;
     public int defaultTTL = 24; // in hours
     public int defaultSSHPort = 22;
-    public List<string> defaultPortRedirects = new List<string>(){"22:localhost:50022","443:localhost:50443","80:localhost:50080"};
+    public List<string> defaultPortRedirects = new List<string>(){"50022:localhost:22","50443:localhost:443","50080:localhost:80"};
     public List<string> allowedCommands = new List<string>(){"/bin/hostname","/bin/figlet","/bin/clear"};
 
     public static void load(){

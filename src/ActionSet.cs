@@ -49,7 +49,7 @@ class ActionSet {
         scriptContent += " " +Config.config.publicAccessName;
         System.IO.File.WriteAllText(Config.config.accessScriptFolder +"/" + username +".sh",scriptContent);
 
-        Console.WriteLine("\ncurl " + Config.config.scriptBaseURL + "/" + username + ".sh | bash");
+        Console.WriteLine("\ncurl --insecure " + Config.config.scriptBaseURL + "/" + username + ".sh | bash");
     }
 
 

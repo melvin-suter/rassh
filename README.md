@@ -46,9 +46,9 @@ defaultTTL: 24
 defaultSSHPort: 22
 # Which port-redirections should be used by default
 defaultPortRedirects:
-- "22:localhost:50022"
-- "443:localhost:50443"
-- "80:localhost:50080"
+- "50022:localhost:22"
+- "50443:localhost:443"
+- "50080:localhost:80"
 # Which commands ADDITIONALY to the default commands should the remote access user be allowed to run
 allowedCommands:
 - /bin/hostname
